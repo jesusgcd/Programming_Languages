@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listado de médicos</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Listado de médicos</h1>
+      <div class="float-right">
+        <a href="/" class="btn btn-secondary">Regresar</a>
+        <a href="/medicos/agregar/" class="btn btn-success">
+          <span class="text-white">Añadir</span>
+        </a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Especialidad</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Itera sobre la lista de pacientes y muestra la información -->
+          <th:block th:each="medico : ${medicos}">
+            <tr>
+              <td th:text="${medico.id}"></td>
+              <td th:text="${medico.cedula}"></td>
+              <td th:text="${medico.nombre}"></td>
+              <td th:text="${medico.apellido}"></td>
+              <td th:text="${medico.especialidad}"></td>
+              <td th:text="${medico.correo}"></td>
+              <td>
+                <a
+                  th:href="@{/medicos/borrar/{medicoId}(medicoId=${medico.id})}"
+                  class="btn btn-danger">
+                  <span class="text-white">Borrar</span>
+                </a>
+                <a
+                  th:href="@{/medicos/editar/{medicoId}(medicoId=${medico.id})}"
+                  class="btn btn-primary">
+                  <span class="text-white">Editar</span>
+                </a>
+              </td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

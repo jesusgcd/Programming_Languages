@@ -1,0 +1,342 @@
+#lang racket
+
+#|
+  Juego: Shisima
+
+
+  Descripción del Juego Shisima:
+
+    1)  Shisima es un juego de estrategia para dos jugadores que se juega en un tablero
+        con nueve posiciones. Cada jugador tiene fichas de un color diferente, por ejemplo,
+        uno puede ser "Rojo" y el otro "Amarillo". El objetivo del juego es ser el primero en
+        formar una línea recta (horizontal, vertical o diagonal) con tres fichas de tu propio
+        color en el tablero.
+ 
+  Cómo Iniciar a Jugar:
+
+    1) Ejecuta el programa presionando el botón "Run" o usando el atajo de teclado "Ctrl + r".
+
+
+  Instrucciones para Jugar:
+  
+    1) Al inicio del juego, el tablero se muestra con 3 posiciones vacías.
+ 
+    2) Cada jugador tiene acceso a las fichas de su color, en este caso, "Rojo" y "Amarillo".
+ 
+    3) Los jugadores se turnan para realizar movimientos.
+
+    4) Para seleccionar una ficha para mover, el jugador debe usar las teclas de función F1
+       hasta F9. Por ejemplo, "F1" corresponde a la ficha 1, "F2" corresponde a la ficha 2 y
+       así sucesivamente.
+
+    5) Después de seleccionar una ficha, el jugador debe ingresar un número del 1 al 9 para
+       indicar la posición de destino en el tablero. El número seleccionado corresponde a la
+       posición en el tablero donde el jugador desea colocar su ficha.
+
+    6) Si el movimiento es válido (cumple con las reglas del juego), la ficha se colocará en
+       la posición deseada.
+
+    7) El juego continúa con el otro jugador, quien también seleccionará una ficha y una
+       posición de destino.
+
+    8) Los jugadores se turnan moviendo fichas hasta que uno de ellos logra formar una línea
+       recta con tres fichas de su color en el tablero.
+
+    9) Cuando un jugador logra formar la línea recta ganadora, el juego se detiene y se
+       declara al ganador.
+
+    10) El ganador es el jugador que forma la línea recta primero, y el juego muestra un
+        mensaje de felicitaciones.
+
+    11) Para iniciar un nuevo juego, puedes reiniciar el programa o volver a ejecutarlo.
+
+  Así es como se juega el juego "Shisima". Los jugadores compiten por ser el primero en formar
+  la línea recta ganadora mientras estratégicamente bloquean los movimientos del oponente.
+  ¡Diviértete jugando!
+
+  Autores:
+    1)  William Gerardo Alfaro Quiros  – 2022437996
+    2)  Jesus Gabriel Cordero Diaz     - 2020081049    
+|#
+
+;; Modulos
+(require 2htdp/image)
+(require 2htdp/universe)
+(require lang/posn)
+
+;; Struct's
+(define-struct nodo (id color) #:transparent #:mutable)
+(define-struct ficha-turno (origen destino cond fin) #:transparent #:mutable)
+
+;; Variables globales (max 2)
+(define fichaTurno (make-ficha-turno "" 0 #f #f))
+
+;; No es una variable es para poder modificar la ruta en donde esta la imagen mas facil
+(define tablero
+  (bitmap/file "C:/Users/alfar/OneDrive - Estudiantes ITCR/TEC/Año 7 (2023)/Semestre II/Lenguajes de Programación/Proyectos/Proyecto 1/proyecto1_lenguajes/img/Shisimatablero.png"))
+
+;; Función para modificar el color de un nodo en el mundo.
+;; Entradas: mundo (lista de nodos), id (número del nodo a modificar), nuevo-color (nuevo color a asignar).
+;; Salidas: Nueva lista de nodos con el color modificado.
+(define (modificar-contenido mundo id nuevo-color)
+  (cond
+   [(null? mundo) '()]
+   [(= (nodo-id (car mundo)) id)
+    (cons (make-nodo id nuevo-color) (modificar-contenido (cdr mundo) id nuevo-color))]
+   [else
+    (cons (car mundo) (modificar-contenido (cdr mundo) id nuevo-color))]))
+
+
+;; Función para obtener el color de un nodo por su id en el mundo.
+;; Entradas: mundo (lista de nodos), id (número del nodo).
+;; Salidas: Color del nodo con el id especificado.
+(define (obtener-color-por-id mundo id)
+  (cond 
+   [(null? mundo) mundo]
+   [(= (nodo-id (car mundo)) id)
+    (nodo-color (car mundo))]
+   [else
+    (obtener-color-por-id (cdr mundo) id)]))
+
+
+;; Función para comparar dos cadenas de texto.
+;; Entradas: cadena1 y cadena2 (cadenas de texto a comparar).
+;; Salidas: #t si las cadenas son iguales, #f en caso contrario.
+(define (comparar-cadenas cadena1 cadena2)
+  (if (string=? cadena1 cadena2)
+      #t
+      #f))
+
+;; Función auxiliar para verificar si un movimiento de ficha es válido.
+;; Entradas: id-nodo-mover (número del nodo a mover), id-nodo-destino (número del nodo de destino), mundo (lista de nodos).
+;; Salidas: #t si el movimiento es válido, #f en caso contrario.
+(define (mover-ficha-aux id-nodo-mover id-nodo-destino mundo)
+  (define id-nodo-centro 9)
+  (define id-nodo-antes (if (= id-nodo-mover 1) 8 (- id-nodo-mover 1)))
+  (define id-nodo-despues (if (= id-nodo-mover 8) 1 (+ id-nodo-mover 1)))
+  (define color-nodo-destino (obtener-color-por-id mundo id-nodo-destino))
+  (define color-validar "grey")
+
+  (cond
+   [(and (= id-nodo-destino id-nodo-centro) (comparar-cadenas color-nodo-destino color-validar))
+    #t]
+   [(and (= id-nodo-destino id-nodo-antes) (comparar-cadenas color-nodo-destino color-validar))
+    #t]
+   [(and (= id-nodo-destino id-nodo-despues) (comparar-cadenas color-nodo-destino color-validar))
+    #t]
+   [(and (= id-nodo-mover 9) (comparar-cadenas color-nodo-destino color-validar))
+    #t]
+   [else
+    #f]))
+
+;; Función para mover una ficha de un nodo a otro en el mundo.
+;; Entradas: id-nodo-mover (número del nodo a mover), id-nodo-destino (número del nodo de destino), mundo (lista de nodos).
+;; Salidas: Nueva lista de nodos después de realizar el movimiento.
+(define (mover-ficha id-nodo-mover id-nodo-destino mundo)
+    (define nuevo-color-nodo-destino (obtener-color-por-id mundo id-nodo-mover) )
+     (define nueva-lista-posiciones '())
+  
+    (cond
+      [(mover-ficha-aux id-nodo-mover id-nodo-destino mundo)
+       (set! nueva-lista-posiciones (modificar-contenido mundo id-nodo-destino nuevo-color-nodo-destino))
+        (set! nueva-lista-posiciones (modificar-contenido nueva-lista-posiciones id-nodo-mover "grey"))
+       nueva-lista-posiciones]
+      [else
+       (displayln "movimiento no perminito")
+       mundo]
+     )
+  )
+
+;; Función para finalizar el juego y mostrar el ganador.
+;; Entradas: color-nodo-ganador (color del nodo ganador).
+;; Salidas: Mensaje de felicitaciones y el color del ganador.
+(define (finalizar-juego color-nodo-ganador)
+  (displayln "Felicidades ganaste")
+  (cond
+    [(comparar-cadenas color-nodo-ganador "red") 
+     (displayln "Ganaron las fichas color Rojo")
+     (set-ficha-turno-fin! fichaTurno #t)]
+    [else
+     (displayln "Ganaron las fichas color Amarillo")
+     (set-ficha-turno-fin! fichaTurno #t)]
+  )
+)
+
+;; Función para validar si se ha alcanzado un estado de ganador en el juego.
+;; Entradas: mundo (lista de nodos).
+;; Salidas: Nueva lista de nodos si hay un ganador, el mundo original en caso contrario.
+(define (validar-gane mundo)
+  (define color-gane1 (obtener-color-por-id mundo 1))
+  (define color-gane2 (obtener-color-por-id mundo 2))
+  (define color-gane3 (obtener-color-por-id mundo 3))
+  (define color-gane4 (obtener-color-por-id mundo 4))
+  (define color-gane5 (obtener-color-por-id mundo 5))
+  (define color-gane6 (obtener-color-por-id mundo 6))
+  (define color-gane7 (obtener-color-por-id mundo 7))
+  (define color-gane8 (obtener-color-por-id mundo 8))
+  (define color-gane9 (obtener-color-por-id mundo 9))
+
+  (cond
+   [(and (comparar-cadenas color-gane1 color-gane5)
+         (comparar-cadenas color-gane1 color-gane9)
+         (comparar-cadenas color-gane5 color-gane9)
+         (not (comparar-cadenas color-gane9 "grey")))
+    (finalizar-juego color-gane9)]
+
+   [(and (comparar-cadenas color-gane2 color-gane6)
+         (comparar-cadenas color-gane2 color-gane9)
+         (comparar-cadenas color-gane6 color-gane9)
+         (not (comparar-cadenas color-gane9 "grey")))
+    (finalizar-juego color-gane9)]
+
+   [(and (comparar-cadenas color-gane3 color-gane7)
+         (comparar-cadenas color-gane3 color-gane9)
+         (comparar-cadenas color-gane7 color-gane9)
+         (not (comparar-cadenas color-gane9 "grey")))
+    (finalizar-juego color-gane9)]
+
+   [(and (comparar-cadenas color-gane4 color-gane8)
+         (comparar-cadenas color-gane4 color-gane9)
+         (comparar-cadenas color-gane8 color-gane9)
+         (not (comparar-cadenas color-gane9 "grey")))
+    (finalizar-juego color-gane9)]
+   [else
+    mundo
+    ]
+   )
+  mundo
+  )
+
+;; Función para pintar el mundo en la pantalla.
+;; Entradas: mundo (lista de nodos).
+;; Salidas: Imagen del mundo en la pantalla.
+(define (pintar-mundo mundo)
+  (define radio 40)
+  (place-images
+   (list
+    (circle radio "solid" (obtener-color-por-id mundo 1)) ; ficha 1
+    (circle radio "solid" (obtener-color-por-id mundo 2)) ; ficha 2
+    (circle radio "solid" (obtener-color-por-id mundo 3)) ; ficha 3
+    (circle radio "solid" (obtener-color-por-id mundo 4)) ; ficha 4
+    (circle radio "solid" (obtener-color-por-id mundo 5)) ; ficha 5
+    (circle radio "solid" (obtener-color-por-id mundo 6)) ; ficha 6
+    (circle radio "solid" (obtener-color-por-id mundo 7)) ; ficha 7
+    (circle radio "solid" (obtener-color-por-id mundo 8)) ; ficha 8
+    (circle radio "solid" (obtener-color-por-id mundo 9)) ; ficha 9
+    )
+   (list
+    (make-posn 289 148) ; ficha 1
+    (make-posn 462 224) ; ficha 2
+    (make-posn 537 400) ; ficha 3
+    (make-posn 461 584) ; ficha 4
+    (make-posn 288 654) ; ficha 5
+    (make-posn 110 583) ; ficha 6
+    (make-posn 40  404) ; ficha 7
+    (make-posn 108 224) ; ficha 8
+    (make-posn 286 400) ; ficha 9
+    )
+   tablero))
+
+;; Función para seleccionar una ficha y realizar un movimiento.
+;; Entradas: mundo (lista de nodos), key (tecla presionada).
+;; Salidas: Nueva lista de nodos después de realizar el movimiento.
+(define (seleccionar-ficha mundo key)
+  (validar-gane mundo)
+  (cond
+    
+    [(key=? key " ") (mundo-inicio)]
+    [(or (key=? key "f1")
+         (key=? key "f2")
+         (key=? key "f3")
+         (key=? key "f4")
+         (key=? key "f5")
+         (key=? key "f6")
+         (key=? key "f7")
+         (key=? key "f8")
+         (key=? key "f9"))
+     (begin
+       (set-ficha-turno-origen! fichaTurno key)) mundo]
+    [(and (string->number key) (<= 1 (string->number key) 9))
+     (begin
+       (set-ficha-turno-destino! fichaTurno key)
+       (set-ficha-turno-cond! fichaTurno #t)) mundo]
+    [else
+     (displayln "Entrada no válida. Debe ser un número entre 1 y 9.") mundo])
+  (cond
+    [(ficha-turno-cond fichaTurno)
+     (cond
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f1")
+        (set! mundo (mover-ficha 1 (string->number (ficha-turno-destino fichaTurno)) mundo))  mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f2")
+        (set! mundo (mover-ficha 2 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f3")
+        (set! mundo (mover-ficha 3 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f4")
+        (set! mundo (mover-ficha 4 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f5")
+        (set! mundo (mover-ficha 5 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f6")
+        (set! mundo (mover-ficha 6 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f7")
+        (set! mundo (mover-ficha 7 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f8")
+        (set! mundo (mover-ficha 8 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       [(comparar-cadenas (ficha-turno-origen fichaTurno) "f9")
+        (set! mundo (mover-ficha 9 (string->number (ficha-turno-destino fichaTurno)) mundo)) mundo]
+       )
+     (validar-gane mundo)
+     (set! fichaTurno (make-ficha-turno "" 0 #f #f)) 
+     mundo]
+    [else
+     mundo])
+  mundo)
+
+
+(define (detener-juego mundo)
+  (ficha-turno-fin fichaTurno))
+
+;; Función para inicializar el mundo con una configuración inicial, las reglas y las instrucciones por consola.
+;; Salidas: Lista de nodos con la configuración inicial del juego.
+(define (mundo-inicio)
+  (displayln "BIENVENIDOS A SHISIMA!\n")
+
+  (displayln "Consigue colocar tus tres fichas en linea para ganar\n")
+
+  (displayln "[Reglas para el juego]\n")
+  (displayln "1) Decide quién jugará primero\n")
+  (displayln "2) No está permitido saltar sobre ninguna ficha\n")
+  (displayln "3) Solo puedes moverte adyacente a tus fichas\n")
+  
+  
+  
+  (displayln "[Instrucciones para el juego]\n")
+  (displayln "* Selecciona una ficha con las teclas de función del teclado\n")
+  (displayln "* Selecciona el destino de la ficha con una tecla numerica\n")
+
+
+
+
+  (list
+     (make-nodo 1 "yellow")
+     (make-nodo 2 "yellow")
+     (make-nodo 3 "yellow")
+     (make-nodo 4 "grey")
+     (make-nodo 5 "red")
+     (make-nodo 6 "red")
+     (make-nodo 7 "red")
+     (make-nodo 8 "grey")
+     (make-nodo 9 "grey")
+     )
+)
+
+
+
+
+;; Función principal que inicia el juego.
+
+(big-bang
+ (mundo-inicio)
+ (to-draw pintar-mundo)
+ (on-key seleccionar-ficha)
+ (stop-when detener-juego)
+ )

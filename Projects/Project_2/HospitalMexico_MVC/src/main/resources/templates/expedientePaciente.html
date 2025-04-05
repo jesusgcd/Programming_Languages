@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Expediente del paciente</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Expediente del paciente</h1>
+      <form action="/buscarExpedientePaciente" method="post">
+        <div class="form-group">
+          <label for="cedula">Cédula del Paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaPaciente" />
+        </div>
+        <a href="/expediente/agregar" class="btn btn-success"
+          >Agregar a expediente</a
+        >
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <a href="/" class="btn btn-secondary">Regresar</a>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Padecimiento</th>
+            <th>Procedimiento Realizado</th>
+            <th>Medicamentos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="expediente : ${expedientesPaciente}">
+            <tr>
+              <td th:text="${expediente.id}"></td>
+              <td th:text="${expediente.fecha}"></td>
+              <td th:text="${expediente.padecimiento}"></td>
+              <td th:text="${expediente.procedimiento_realizado}"></td>
+              <td th:text="${expediente.medicamentos}"></td>
+              <td>
+                <a
+                  th:href="@{/expediente/borrar/{expedienteId}(expedienteId=${expediente.id})}"
+                  class="btn btn-danger btn-lg btn-img">
+                  <span class="text-white">Borrar</span>
+                </a>
+                <a
+                  th:href="@{/expediente/editar/{expedienteId}(expedienteId=${expediente.id})}"
+                  class="btn btn-primary btn-lg btn-img">
+                  <span class="text-white">Editar</span>
+                </a>
+              </td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>

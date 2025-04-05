@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Añadir médico</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Añadir médico</h1>
+      <form action="/medicos/crear/form" method="post">
+        <div class="form-group">
+          <label for="cedula">Cédula</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaMedico" />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombreMedico" />
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellido"
+            name="apellidoMedico" />
+        </div>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select
+            class="form-control"
+            id="especialidad"
+            name="especialidadMedico">
+            <option value="">-- Seleccione una especialidad --</option>
+            <option value="General">General</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Gastroenterología">Gastroenterología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Pediatría">Pediatría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input
+            type="email"
+            class="form-control"
+            id="correo"
+            name="correoMedico" />
+        </div>
+        <button type="submit" class="btn btn-primary">Añadir</button>
+        <a href="/ControladorListaMedicos" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <p th:text="${mensajeError}"></p>
+    </div>
+  </body>
+</html>

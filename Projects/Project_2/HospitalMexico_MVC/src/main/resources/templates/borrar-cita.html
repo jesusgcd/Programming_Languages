@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Borrar cita</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Borrar cita</h1>
+      <form action="/citas/borrar/form" method="post">
+        <div class="form-group">
+          <label for="id">Id cita</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="idCita"
+            th:value="${cita != null ? cita.id : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="cedula">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaPaciente"
+            th:value="${cita != null ? cita.cedula_paciente : ''}"
+            readonly />
+        </div>
+        <button type="submit" class="btn btn-danger">Borrar cita</button>
+        <a href="/ControladorAgendaPaciente" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <p th:text="${mensajeError}"></p>
+    </div>
+  </body>
+</html>

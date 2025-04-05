@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Añadir a expediente</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Añadir a expediente</h1>
+      <form action="/expediente/agregar/form" method="post">
+        <div class="form-group">
+          <label for="cedulaPaciente">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedulaPaciente"
+            name="cedulaPaciente" />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha de creación</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" />
+        </div>
+        <div class="form-group">
+          <label for="Padecimiento">Padecimientos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="padecimiento"
+            name="padecimiento" />
+        </div>
+        <div class="form-group">
+          <label for="procedimiento_realizado">Procedimientos Realizados</label>
+          <input
+            type="text"
+            class="form-control"
+            id="procedimiento_realizado"
+            name="procedimiento_realizado" />
+        </div>
+        <div class="form-group">
+          <label for="Medicamentos">Medicamentos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="medicamentos"
+            name="medicamentos" />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Agregar al Expediente
+        </button>
+        <a href="/ControladorExpedientePaciente" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>

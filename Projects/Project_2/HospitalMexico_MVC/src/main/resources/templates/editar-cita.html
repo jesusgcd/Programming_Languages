@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar cita</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Editar cita</h1>
+      <form action="/citas/editar/form" method="post">
+        <div class="form-group">
+          <label for="id">Id cita</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="idCita"
+            th:value="${cita != null ? cita.id : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="cedula">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaPaciente"
+            th:value="${cita != null ? cita.cedula_paciente : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fecha"
+            name="fecha"
+            th:value="${cita != null ? cita.fecha : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="hora">Hora</label>
+          <input
+            type="time"
+            class="form-control"
+            id="hora"
+            name="hora"
+            th:value="${cita != null ? cita.hora : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select class="form-control" id="especialidad" name="especialidad">
+            <option value="">-- Seleccione la nueva especialidad --</option>
+            <option value="General">General</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Gastroenterología">Gastroenterología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Pediatría">Pediatría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="duracion">Duración</label>
+          <input
+            type="text"
+            class="form-control"
+            id="duracion"
+            name="duracion"
+            th:value="${cita != null ? cita.duracion : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="medico">Cedula del médico que edita la cita</label>
+          <input type="text" class="form-control" id="medico" name="medico" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/ControladorAgendaPaciente" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listado de pacientes</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Listado de pacientes</h1>
+      <div class="float-right">
+        <a href="/" class="btn btn-secondary">Regresar</a>
+        <a href="/paciente/agregar/" class="btn btn-success">
+          <span class="text-white">Añadir</span>
+        </a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Medico de Cabecera</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="pacientesConCitas : ${listaPacientesConCitas}">
+            <tr>
+              <td th:text="${pacientesConCitas.paciente.id}"></td>
+              <td th:text="${pacientesConCitas.paciente.cedula}"></td>
+              <td th:text="${pacientesConCitas.paciente.nombre}"></td>
+              <td th:text="${pacientesConCitas.paciente.apellido}"></td>
+              <td th:text="${pacientesConCitas.paciente.medico_cabecera}"></td>
+              <td th:text="${pacientesConCitas.paciente.correo}"></td>
+              <td>
+                <a
+                  th:href="@{/pacientes/borrar/{pacienteId}(pacienteId=${pacientesConCitas.paciente.id})}"
+                  class="btn btn-danger">
+                  <span class="text-white">Borrar</span>
+                </a>
+                <a
+                  th:href="@{/pacientes/editar/{pacienteId}(pacienteId=${pacientesConCitas.paciente.id})}"
+                  class="btn btn-primary">
+                  <span class="text-white">Editar</span>
+                </a>
+              </td>
+            </tr>
+            <td colspan="8">
+              <strong>Fechas Citas: </strong>
+              <a th:text="${pacientesConCitas.citas}"></a>
+            </td>
+          </th:block>
+        </tbody>
+      </table>
+      <tr></tr>
+    </div>
+  </body>
+</html>

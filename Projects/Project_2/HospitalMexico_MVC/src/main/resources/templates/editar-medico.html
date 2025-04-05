@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar médico</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Editar médico</h1>
+      <form
+        action="/medicos/editar/form"
+        method="post"
+        th:with="medico=${medico}">
+        <div class="form-group">
+          <label for="id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="idMedico"
+            th:value="${medico != null ? medico.id : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="cedula">Cédula</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaMedico"
+            th:value="${medico != null ? medico.cedula : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select
+            class="form-control"
+            id="especialidad"
+            name="especialidadMedico">
+            <option value="">-- Seleccione una especialidad --</option>
+            <option value="General">General</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Gastroenterología">Gastroenterología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Pediatría">Pediatría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="correo"
+            name="correoMedico"
+            th:value="${medico != null ? medico.correo : ''}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/ControladorListaMedicos" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+    </div>
+  </body>
+</html>

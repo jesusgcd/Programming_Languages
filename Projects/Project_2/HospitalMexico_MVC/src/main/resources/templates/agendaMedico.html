@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agenda de medico</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Agenda de medico</h1>
+      <form action="/buscarMedico" method="post">
+        <div class="form-group">
+          <label for="cedula">Cédula del Medico</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaMedico" />
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <a href="/" class="btn btn-secondary">Regresar</a>
+      </form>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Servicio</th>
+            <th>Paciente</th>
+            <th>Duracion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="cita : ${citas}">
+            <tr>
+              <td th:text="${cita.id}"></td>
+              <td th:text="${cita.fecha}"></td>
+              <td th:text="${cita.hora}"></td>
+              <td th:text="${especialidadMedico}"></td>
+              <td th:text="${cita.cedulaPaciente}"></td>
+              <td th:text="${cita.duracion}"></td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>

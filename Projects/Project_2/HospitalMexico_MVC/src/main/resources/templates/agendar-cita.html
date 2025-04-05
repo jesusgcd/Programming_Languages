@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agendar cita</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Agendar cita</h1>
+      <form action="/citas/agendar/form" method="post">
+        <div class="form-group">
+          <label for="cedulaPaciente">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedulaPaciente"
+            name="cedulaPaciente" />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha de la cita</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" />
+        </div>
+        <div class="form-group">
+          <label for="hora">Hora de la cita</label>
+          <input type="time" class="form-control" id="hora" name="hora" />
+        </div>
+        <div class="form-group">
+          <label for="especialidad">Especialidad</label>
+          <select class="form-control" id="especialidad" name="especialidad">
+            <option value="">-- Seleccione una especialidad --</option>
+            <option value="General">General</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Gastroenterología">Gastroenterología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Pediatría">Pediatría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="medico">Cedula del médico que agenda la cita</label>
+          <input type="text" class="form-control" id="medico" name="medico" />
+        </div>
+        <button type="submit" class="btn btn-primary">Agendar cita</button>
+        <a href="/ControladorAgendaPaciente" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>

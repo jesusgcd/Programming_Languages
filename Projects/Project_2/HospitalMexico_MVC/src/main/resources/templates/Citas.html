@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo de vista dinámica con Thymeleaf</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Campo para pedir la cédula del paciente -->
+    <div class="container">
+      <h1>Listado de expedientes</h1>
+      <form action="/consultarExpediente" method="post">
+        <div class="form-group">
+          <label for="cedulaPaciente">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedulaPaciente"
+            name="cedulaPaciente"
+            placeholder="Ingrese la cédula del paciente" />
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+      </form>
+    </div>
+
+    <!-- Listado de expedientes -->
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Número de expediente</th>
+            <th>Fecha de creación</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Lista de expedientes dinámicos -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

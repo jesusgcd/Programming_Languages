@@ -1,0 +1,78 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menú</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/imgStyles.css" />
+    <style>
+      img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 0;
+      }
+
+      .nav-link {
+        color: black;
+      }
+
+      .nav-link.active {
+        color: #fff;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Menú Hospital México Costa Rica</h1>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/ControladorAgendaMedico"
+                data-toggle="tab"
+                >Agenda de médico</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/ControladorExpedientePaciente"
+                data-toggle="tab"
+                >Expediente de paciente</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/ControladorAgendaPaciente"
+                data-toggle="tab"
+                >Agenda de paciente</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/ControladorListaPacientes"
+                data-toggle="tab"
+                >Lista de pacientes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/ControladorListaMedicos"
+                data-toggle="tab"
+                >Lista de médicos</a
+              >
+            </li>
+          </ul>
+          <img src="/img/logo.png" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

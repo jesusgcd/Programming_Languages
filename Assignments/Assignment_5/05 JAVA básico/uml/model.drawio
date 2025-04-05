@@ -1,0 +1,125 @@
+<mxfile host="65bd71144e">
+    <diagram id="yveVzkc2vd2By8JwsRWd" name="Página-1">
+        <mxGraphModel dx="1823" dy="571" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="Animal" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="-225" y="350" width="290" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="- int: ContadorAnimal&lt;br&gt;- int: id&lt;br&gt;- string: Nombre&lt;br&gt;- string: TipoEspecie&lt;br&gt;- int: Edad&lt;br&gt;- string: Duenno&lt;br&gt;- string: ContactoDuenno&lt;br&gt;- string: nivelPeligro&lt;br&gt;- string: Efermedad" style="text;html=1;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="3" vertex="1">
+                    <mxGeometry y="30" width="290" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="3" vertex="1">
+                    <mxGeometry y="180" width="290" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;br&gt;+ convercionEdad(): string&lt;br&gt;+ convercionEdad(int constanteConvercion): string&lt;br&gt;+ imprimeInformacion(): string" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="3" vertex="1">
+                    <mxGeometry y="190" width="290" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" style="edgeStyle=elbowEdgeStyle;rounded=1;elbow=vertical;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;strokeWidth=2;endArrow=none;endFill=0;startSize=0;endSize=15;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-359.71428571428555" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Anfibio" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="-485" y="750" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="- int: Contador&lt;span style=&quot;text-align: center;&quot;&gt;Anfibios&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="11" vertex="1">
+                    <mxGeometry y="30" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="11" vertex="1">
+                    <mxGeometry y="70" width="250" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;+ getContadorAnfibios&lt;/span&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;(): string&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="11" vertex="1">
+                    <mxGeometry y="80" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" style="edgeStyle=elbowEdgeStyle;rounded=1;elbow=vertical;html=1;strokeWidth=2;endArrow=none;endFill=0;startSize=0;endSize=15;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-80" y="680" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-80" y="680"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="Reptil" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="-205" y="750" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="- int: ContadorReptiles" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="25" vertex="1">
+                    <mxGeometry y="30" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="25" vertex="1">
+                    <mxGeometry y="70" width="250" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;+ getContadorReptil&lt;/span&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;(): string&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="25" vertex="1">
+                    <mxGeometry y="80" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=none;endFill=0;startSize=0;endSize=2;targetPerimeterSpacing=6;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="28" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="205" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="&lt;span style=&quot;text-align: left;&quot;&gt;Insecto&lt;/span&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="75" y="750" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="- int: ContadorInsecto" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="28" vertex="1">
+                    <mxGeometry y="30" width="260" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="28" vertex="1">
+                    <mxGeometry y="60" width="260" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="&lt;span style=&quot;text-align: center;&quot;&gt;+ getContador&lt;/span&gt;Insecto&lt;span style=&quot;text-align: center;&quot;&gt;(): string&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="28" vertex="1">
+                    <mxGeometry y="100" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" style="edgeStyle=elbowEdgeStyle;html=1;elbow=vertical;endArrow=block;endFill=0;strokeWidth=2;rounded=0;startSize=0;endSize=15;entryX=0.5;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" source="31" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-115" y="640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-75" y="680"/>
+                            <mxPoint x="-75" y="680"/>
+                            <mxPoint x="-95" y="680"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" value="Extienden" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;fontFamily=Architects Daughter;fontColor=#333333;labelBackgroundColor=#FFFFFF;html=1;labelBorderColor=none;" parent="48" vertex="1" connectable="0">
+                    <mxGeometry x="0.8802" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="Vertebrado" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="-775" y="750" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="- int: ContadorVertebrados" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="31" vertex="1">
+                    <mxGeometry y="30" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="31" vertex="1">
+                    <mxGeometry y="70" width="250" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;+ getContadorVertebrados&lt;/span&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;(): string&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="31" vertex="1">
+                    <mxGeometry y="80" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;span style=&quot;text-align: left;&quot;&gt;Arana&lt;/span&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;sketch=1;curveFitting=1;jiggle=2;fontColor=#333333;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="355" y="750" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="- int: ContadorArana" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="34" vertex="1">
+                    <mxGeometry y="30" width="250" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="34" vertex="1">
+                    <mxGeometry y="70" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="&lt;span style=&quot;text-align: center;&quot;&gt;+ getContadorArana(): string&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;" parent="34" vertex="1">
+                    <mxGeometry y="90" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=none;endFill=0;startSize=0;endSize=2;targetPerimeterSpacing=6;exitX=0.5;exitY=0;exitDx=0;exitDy=0;sketch=1;curveFitting=1;jiggle=2;fontColor=#000000;strokeColor=#666666;fillColor=#f5f5f5;" parent="1" source="34" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-85" y="680" as="targetPoint"/>
+                        <mxPoint x="215" y="760.0000000000001" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="480" y="720"/>
+                            <mxPoint x="485" y="720"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar expediente</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Editar expediente</h1>
+      <form action="/expediente/editar/form" method="post">
+        <div class="form-group">
+          <label for="id">Id expediente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="idExpediente"
+            th:value="${expediente != null ? expediente.id : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="cedula">Cédula del paciente</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cedula"
+            name="cedulaPaciente"
+            th:value="${expediente != null ? expediente.cedula : ''}"
+            readonly />
+        </div>
+        <div class="form-group">
+          <label for="fecha">Fecha de edicion</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fecha"
+            name="fecha"
+            th:value="${expediente != null ? expediente.fecha : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="Padecimiento">Padecimientos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="padecimiento"
+            name="padecimiento"
+            th:value="${expediente != null ? expediente.padecimiento : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="procedimiento_realizado">Procedimientos Realizados</label>
+          <input
+            type="text"
+            class="form-control"
+            id="procedimiento_realizado"
+            name="procedimiento_realizado"
+            th:value="${expediente != null ? expediente.procedimiento_realizado : ''}" />
+        </div>
+        <div class="form-group">
+          <label for="Medicamentos">Medicamentos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="medicamentos"
+            name="medicamentos"
+            th:value="${expediente != null ? expediente.medicamentos : ''}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/ControladorExpedientePaciente" class="btn btn-secondary"
+          >Regresar</a
+        >
+      </form>
+      <div>
+        <p th:text="${mensajeError}"></p>
+      </div>
+    </div>
+  </body>
+</html>
